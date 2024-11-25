@@ -32,6 +32,10 @@ public class StepDefinitions {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
+        options.addArguments("start-maximized"); // https://stackoverflow.com/a/26283818/1689770
+        options.addArguments("enable-automation"); // https://stackoverflow.com/a/43840128/1689770
+        options.addArguments("--disable-browser-side-navigation"); //https://stackoverflow.com/a/49123152/1689770
+        options.addArguments("--disable-gpu");
         driver = new ChromeDriver(options);
         driver.get(url);
         driver.manage().window().maximize();
