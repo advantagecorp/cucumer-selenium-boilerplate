@@ -27,7 +27,9 @@ public class StepDefinitions {
     public void startDriver(String url){
 
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
         driver.get(url);
         driver.manage().window().maximize();
 
