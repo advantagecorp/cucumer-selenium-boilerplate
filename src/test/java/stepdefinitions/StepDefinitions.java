@@ -30,6 +30,7 @@ public class StepDefinitions {
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
         driver = new ChromeDriver(options);
         driver.get(url);
         driver.manage().window().maximize();
