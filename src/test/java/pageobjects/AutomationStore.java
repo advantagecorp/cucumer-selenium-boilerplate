@@ -13,12 +13,27 @@ public class AutomationStore {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "img[class^='logo']")
+    @FindBy(xpath = "//html/body/header/nav/div/a/span")
     public WebElement logoStore;
 
-    @FindBy(css = "a[title='Women']")
+    @FindBy(id = "menuUserSVGPath")
     public WebElement menuCategoryWomen;
 
     @FindBy(css = "a[title='Women'] ~ ul  a")
     public List<WebElement> dropdownItemsCategoryWomen;
+
+    @FindBy(name = "username")
+    public WebElement userName;
+
+    @FindBy(xpath = "//label[contains(text(),'Password')]")
+    public WebElement passwordLabel;
+
+    @FindBy(name = "password")
+    public WebElement password;
+
+    @FindBy(id = "sign_in_btn")
+    public WebElement signInButton;
+
+    @FindBy(xpath = "//a[@id='menuUserLink']/span")
+    public WebElement menuItem;
 }

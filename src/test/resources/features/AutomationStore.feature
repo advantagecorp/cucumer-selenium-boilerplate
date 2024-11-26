@@ -2,14 +2,8 @@
 Feature: AutomationStore
 
   @verifyMenuOptions
-  Scenario: Verify the options for menu
-    Given the site "Automation practise store" is open
-    When I open the "Women" menu
-    Then I can see the menu items:
-      | TOPS            |
-      | T-shirts        |
-      | Blouses         |
-      | DRESSES         |
-      | Casual Dresses  |
-      | Evening Dresses |
-      | Summer Dresses  |
+  Scenario: Good sign in
+    Given the site "advantageonlineshopping" is open
+    When I click the "LOGIN" form
+    And I can enter username: "admin" and password: "adm1n"
+    Then I should be signed in as "admin"
