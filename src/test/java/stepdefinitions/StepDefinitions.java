@@ -26,14 +26,24 @@ public class StepDefinitions {
 
     private WebDriver driver;
 
-    public void startDriver(String url){
+    public void startDriver(String url) throws Exception {
 
         System.setProperty("webdriver.chrome.driver", new File("chromedriver.exe").getPath());
         ChromeOptions options = new ChromeOptions();
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.contains("win")) {
+            System.out.println("The system is Windows.");
+        } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+            System.out.println("The system is Linux or Mac.");
+            options.addArguments("--headless");
+            options.addArguments("start-maximized"); // https://stackoverflow.com/a/26283818/1689770
+        } else {
+            System.out.println("Unknown operating system: " + os);
+            throw new Exception("Unkown OS");
+        }
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
-//        options.addArguments("start-maximized"); // https://stackoverflow.com/a/26283818/1689770
         options.addArguments("enable-automation"); // https://stackoverflow.com/a/43840128/1689770
         options.addArguments("--disable-browser-side-navigation"); //https://stackoverflow.com/a/49123152/1689770
         options.addArguments("--disable-gpu");
@@ -55,7 +65,7 @@ public class StepDefinitions {
     }
 
     @Given("the site {string} is open")
-    public void theSiteDuckDuckGoIsOpen(String site) throws InterruptedException {
+    public void theSiteDuckDuckGoIsOpen(String site) throws Exception {
         String url = "";
 
         switch (site.toLowerCase()){
