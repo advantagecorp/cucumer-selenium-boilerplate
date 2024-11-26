@@ -28,13 +28,15 @@ public class StepDefinitions {
 
     public void startDriver(String url) throws Exception {
 
-        System.setProperty("webdriver.chrome.driver", new File("chromedriver.exe").getPath());
+
         ChromeOptions options = new ChromeOptions();
         String os = System.getProperty("os.name").toLowerCase();
 
         if (os.contains("win")) {
+            System.setProperty("webdriver.chrome.driver", new File("chromedriver.exe").getPath());
             System.out.println("The system is Windows.");
         } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+            System.setProperty("webdriver.chrome.driver", new File("/usr/bin/chromedriver").getPath());
             System.out.println("The system is Linux or Mac.");
             options.addArguments("--headless");
             options.addArguments("start-maximized"); // https://stackoverflow.com/a/26283818/1689770
