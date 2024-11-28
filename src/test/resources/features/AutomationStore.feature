@@ -1,7 +1,7 @@
-@myStore
+@AOS
 Feature: AutomationStore
 
-  @verifyMenuOptions
+  @verifyLogin
   Scenario: Good sign in
     Given the site "advantageonlineshopping" is open
     When I click the "LOGIN" form
